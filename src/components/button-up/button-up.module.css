@@ -1,0 +1,38 @@
+.button {
+  display: flex;
+  width: 355px;
+  padding: 24px 60px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-button);
+  border: none;
+  border-radius: 40px;
+  position: absolute;
+  bottom: -27px;
+  right: 10px;
+}
+
+.text {
+  margin: 0;
+  font-family: "Nunito";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 19.8px */
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-image: url('../../images/Arrow.svg');
+}
+
+@media screen and (min-width: 1024px) {
+  .button {
+    right: 20px;
+    width: auto;
+  }
+}

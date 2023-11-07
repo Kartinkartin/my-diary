@@ -1,13 +1,28 @@
 .footer {
-    width: 100%;
-    height: 87px;
-    background-color: var(--color-dark);
-    font-family: Nunito;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    color: var(--color-light);
-    padding-top: 45px;
-    padding-left: 20px;
-    text-align: left;
+  width: 100%;
+  height: 87px;
+  box-sizing: border-box;
+  background-color: var(--color-dark);
+  font-family: "Nunito";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-light);
+  padding-top: 45px;
+  padding-left: 20px;
+  text-align: left;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    height: 70px;
+    padding-top: 25px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .footer {
+    height: 70px;
+    padding-left: 40px;
+  }
 }

@@ -1,0 +1,71 @@
+.container {
+  min-width: 355px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 34px;
+  padding-bottom: 50px;
+  padding-left: 10px;
+  padding-right: 14px;
+}
+
+.title {
+  font-family: "Nunito";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.text {
+  font-family: "Nunito";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+  margin: 0;
+  padding-bottom: 24px;
+}
+
+.date_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date {
+  font-family: "Nunito";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  color: var(--color-date);
+  margin: 0;
+  padding-left: 34px;
+  background-image: url("../../images/icon-calendar.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.time {
+  background-image: url("../../images/icon-clock.svg");
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    min-width: 480px;
+  }
+  .title {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    min-width: 578px;
+  }
+  .title {
+    font-size: 42px;
+  }
+}
