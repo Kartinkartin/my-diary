@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 }
 
 .button_close {
@@ -38,4 +39,34 @@
   padding: 0;
   cursor: pointer;
   z-index: 1;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 924px;
+    height: auto;
+    border-radius: 40px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  .button_close {
+    top: 17px;
+    right: 18px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    width: 1214px;
+    height: auto;
+    border-radius: 45px;
+    padding-bottom: 53px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .button_close {
+    top: 27px;
+    right: 34px;
+  }
 }

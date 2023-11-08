@@ -12,7 +12,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 23px;
   width: 100%;
   padding-top: 32px;
 }
@@ -30,6 +30,7 @@
 .field {
   background-color: #F6F6F6;
   border-radius: 4px;
+  padding: 1px;
 }
 
 .field_small {
@@ -50,8 +51,54 @@
   line-height: 90%; /* 16.2px */
   letter-spacing: 1.08px;
   text-transform: uppercase;
-  padding: 42px 32px;
+  padding: 42px 0;
+  text-wrap: nowrap;
+  width: 357px;
   justify-content: center;
   align-items: center;
   border-radius: 65px;
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    font-size: 42px;
+  }
+  .form {
+    padding-top: 40px;
+  }
+  .field_large {
+    height: 166px;
+  }
+  .button {
+    margin-top: 10px;
+    padding: 42px 120px;
+    display: flex;
+    width: fit-content;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 42px;
+    row-gap: 22px;
+  }
+  .area_title {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .area_date {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .area_note {
+    grid-row: 2;
+    grid-column: 1/-1;
+  }
+  .button {
+    grid-row: 3;
+  }
 }

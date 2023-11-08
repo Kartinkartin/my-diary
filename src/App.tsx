@@ -15,7 +15,7 @@ function App() {
       <Footer />
       {isModalOpen && (
           <Modal onClose={closeModal}>
-            <PopupAdd />
+            <PopupAdd onClose={closeModal} />
           </Modal>
         )}
     </div>
