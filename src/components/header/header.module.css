@@ -27,11 +27,17 @@
   border-radius: 50%;
   border: none;
   padding: 0;
-  background-color: var(--color-dark);
+  background-color: var(--color-navy);
   background-image: url("../../images/Icon-create-post.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 24px 24px;
+}
+
+.button__text {
+  margin: 0;
+  width: 0;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 1024px) {
@@ -50,6 +56,9 @@
     padding: 42px 120px;
     border-radius: 65px;
     background-image: none;
+  }
+  .button__text {
+    width: auto;
     font-family: 'Nunito';
     font-size: 18px;
     font-style: normal;
@@ -57,7 +66,7 @@
     line-height: 90%; /* 16.2px */
     letter-spacing: 1.08px;
     text-transform: uppercase;
-    color: var(--color-light);
+    color: var(--color-white);
   }
 }
 

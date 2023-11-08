@@ -1,11 +1,15 @@
 import styles from "./header.module.css";
 
-export default function Header() {
+interface HeaderProps {
+  writeHandler: () => void;
+}
+
+export default function Header({writeHandler}: HeaderProps) {
   return (
     <section className={styles.header}>
       <div className={styles.logo} />
-      <button className={styles.button} type="button" onClick={() => {}}>
-        Написать    
+      <button className={styles.button} type="button" onClick={writeHandler}>
+        <p className={styles.button__text}>Написать</p>
       </button>
     </section>
   );

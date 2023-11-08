@@ -10,7 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: var(--color-dark);
+  color: var(--color-navy);
   font-family: "Nunito";
   font-size: 14px;
   font-style: normal;
@@ -19,7 +19,7 @@
 }
 
 .disabled {
-  background-color: var(--color-disabled);
+  background-color: var(--color-grey);
 }
 
 .icon_sort {

@@ -2,9 +2,9 @@
 
 .App {
   text-align: center;
-  --color-dark: #050F28; 
-  --color-light: #FFF;
+  --color-navy: #050F28; 
+  --color-white: #FFF;
   --color-button: #88A1DE;
-  --color-disabled: #F6F6F6;
+  --color-grey: #F6F6F6;
   --color-date: #88A1DE;
 }
