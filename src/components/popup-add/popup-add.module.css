@@ -18,7 +18,7 @@
 }
 
 .label {
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -28,9 +28,15 @@
 }
 
 .field {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 4px;
   padding: 1px;
+  font-family: 'Nunito';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  padding: 5px;
 }
 
 .field_small {
@@ -42,9 +48,9 @@
 }
 
 .button {
-  background-color: #050F28;
+  background-color: #050f28;
   color: #fff;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
