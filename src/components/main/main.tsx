@@ -10,8 +10,9 @@ export default function Body() {
   const [notes, setNotes] = useState<Array<INote>>([]);
   useEffect(() => {
     getPosts().then((posts) => {
-      console.log(posts)
-      setNotes(posts)});
+      console.log(posts);
+      setNotes(posts);
+    });
   }, []);
   return (
     <main className={styles.body}>
@@ -25,7 +26,12 @@ export default function Body() {
       {notes.length && (
         <div className={styles.posts}>
           {notes.map((note) => (
-            <Post title={note.title} text={note.text} date={note.createdAt} key={note._id as Key} />
+            <Post
+              title={note.title}
+              text={note.text}
+              date={note.createdAt}
+              key={note._id as Key}
+            />
           ))}
         </div>
       )}

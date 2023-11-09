@@ -1,15 +1,23 @@
 import { FormEvent } from "react";
 import styles from "./popup-add.module.css";
+import { createPost } from "../utils/api";
+import useForm from "../../hooks/use-form";
 
 interface PopupProps {
   onClose: () => void;
 }
 
 export default function PopupAdd({ onClose }: PopupProps) {
+  const { values, setValues, handleChange } = useForm({
+    title: "",
+    text: "",
+    date: "",
+  });
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log('submit')
-  }
+    createPost({ title: values.title, text: values.text });
+    onClose();
+  };
   return (
     <>
       <h2 className={styles.title}>Новая запись</h2>
@@ -23,6 +31,8 @@ export default function PopupAdd({ onClose }: PopupProps) {
             name="title"
             required={true}
             className={`${styles.field} ${styles.field_small}`}
+            onChange={handleChange}
+            value={values.title}
           />
         </label>
         <label htmlFor="date" className={`${styles.label} ${styles.area_date}`}>
@@ -31,6 +41,8 @@ export default function PopupAdd({ onClose }: PopupProps) {
             name="date"
             required={true}
             className={`${styles.field} ${styles.field_small}`}
+            onChange={handleChange}
+            value={values.date}
           />
         </label>
         <label htmlFor="text" className={`${styles.label} ${styles.area_note}`}>
@@ -39,6 +51,8 @@ export default function PopupAdd({ onClose }: PopupProps) {
             name="text"
             required={true}
             className={`${styles.field} ${styles.field_large}`}
+            onChange={handleChange}
+            value={values.text}
           />
         </label>
         <button type="submit" className={styles.button}>

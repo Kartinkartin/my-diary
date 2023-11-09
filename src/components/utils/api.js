@@ -9,10 +9,6 @@ const checkResponse = (res) => {
   });
 };
 const headersWithContentType = { "Content-Type": "application/json" };
-const headersWithAuthorizeFn = () => ({
-  "Content-Type": "application/json",
-  authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
-});
 
 export const refreshAndSet = (method, contextSetter) => {
   method().then(contextSetter);
@@ -25,17 +21,10 @@ export const getPosts = (page = 1) => {
   }).then(checkResponse);
 };
 
-export const getCard = (id) => {
-  return fetch(`${URL}/wishes/${id}`, {
-    method: "GET",
-    headers: headersWithAuthorizeFn(),
-  }).then(checkResponse);
-};
-
-export const createCard = (wish) => {
-  return fetch(`${URL}/wishes`, {
+export const createPost = (post) => {
+  return fetch(`${URL}/posts`, {
     method: "POST",
-    headers: headersWithAuthorizeFn(),
-    body: JSON.stringify(wish),
+    headers: headersWithContentType,
+    body: JSON.stringify(post),
   }).then(checkResponse);
 };
