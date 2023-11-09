@@ -1,3 +1,4 @@
+import { FormEvent } from "react";
 import styles from "./popup-add.module.css";
 
 interface PopupProps {
@@ -5,10 +6,14 @@ interface PopupProps {
 }
 
 export default function PopupAdd({ onClose }: PopupProps) {
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log('submit')
+  }
   return (
     <>
       <h2 className={styles.title}>Новая запись</h2>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <label
           htmlFor="title"
           className={`${styles.label} ${styles.area_title}`}
