@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  background-color: var(--color-button);
+  background-color: var(--color-light-blue);
   border: none;
   border-radius: 40px;
   position: absolute;
