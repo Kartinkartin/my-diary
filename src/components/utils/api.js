@@ -22,6 +22,7 @@ export const getPosts = (page = 1) => {
 };
 
 export const createPost = (post) => {
+  debugger
   return fetch(`${URL}/posts`, {
     method: "POST",
     headers: headersWithContentType,
