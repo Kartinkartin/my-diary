@@ -14,7 +14,21 @@ export const refreshAndSet = (method, contextSetter) => {
   method().then(contextSetter);
 };
 
-export const getPosts = (page = 1) => {
+export const getPostsNewFirst = () => {
+  return fetch(`${URL}/posts/new-first`, {
+    method: "GET",
+    headers: headersWithContentType,
+  }).then(checkResponse);
+};
+
+export const getPostsOldFirst = () => {
+  return fetch(`${URL}/posts/old-first`, {
+    method: "GET",
+    headers: headersWithContentType,
+  }).then(checkResponse);
+};
+
+export const getPosts = () => {
   return fetch(`${URL}/posts/`, {
     method: "GET",
     headers: headersWithContentType,
