@@ -8,7 +8,7 @@ interface PopupProps {
 }
 
 export default function PopupAdd({ onClose }: PopupProps) {
-  const { values, setValues, handleChange } = useForm({
+  const { values, handleChange } = useForm({
     title: "",
     text: "",
     year: "",

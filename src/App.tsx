@@ -10,7 +10,7 @@ function App() {
   const { isModalOpen, openModal, closeModal } = useModal();
   return (
     <div className="App">
-      <Header writeHandler={openModal} />
+      <Header writeHandler={openModal} buttonActive={isModalOpen} />
       <Body />
       <Footer />
       {isModalOpen && (
