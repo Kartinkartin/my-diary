@@ -15,13 +15,11 @@ export default function Body() {
       if (e.target.id !== sort) {
         if (sort === "new first") {
           getPostsOldFirst().then((posts) => {
-            console.log(posts);
             setNotes(posts);
           });
           return "old first";
         } else {
           getPostsNewFirst().then((posts) => {
-            console.log(posts);
             setNotes(posts);
           });
           return "new first";
@@ -34,7 +32,6 @@ export default function Body() {
 
   useEffect(() => {
     getPostsNewFirst().then((posts) => {
-      console.log(posts);
       setNotes(posts);
     });
   }, []);

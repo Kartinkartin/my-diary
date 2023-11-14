@@ -11,7 +11,7 @@ export default function Post({ title, text, date }: IPostProps) {
   const [year, month, day, hours, min] = [
     dateInfo.getFullYear(),
     dateInfo.getMonth(),
-    dateInfo.getDay(),
+    dateInfo.getDate(),
     dateInfo.getHours(),
     dateInfo.getMinutes(),
   ];
@@ -21,7 +21,7 @@ export default function Post({ title, text, date }: IPostProps) {
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.text}>{text}</p>
       <div className={styles.date_container}>
-        <p className={styles.date}>{`${day}.${month}.${year}`}</p>
+        <p className={styles.date}>{`${day}.${month+1}.${year}`}</p>
         <p className={`${styles.date} ${styles.time}`}>{`${hours}:${min}`}</p>
       </div>
     </div>

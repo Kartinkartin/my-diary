@@ -1,7 +1,8 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "./popup-add.module.css";
 import { createPost } from "../utils/api";
 import useForm from "../../hooks/use-form";
+import validateDate from "../utils/functions";
 
 interface PopupProps {
   onClose: () => void;
@@ -15,19 +16,44 @@ export default function PopupAdd({ onClose }: PopupProps) {
     month: "",
     day: "",
     hours: "",
-    minutes: ""
+    minutes: "",
   });
+
+  const validateDateField = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const fieldType: { [key: string]: number } = {
+      month: 13,
+      day: 32,
+      hours: 24,
+      minutes: 60,
+    }
+    if (
+      (Number(event.target.value) &&
+        Number(event.target.value) < fieldType[event.target.name] ) ||
+      event.target.value === ""
+    ) {
+      handleChange(event);
+    }
+  };
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const createDate = new Date();
     createDate.setFullYear(+values.year);
-    createDate.setMonth(+values.month);
+    createDate.setMonth(+values.month-1);
     createDate.setDate(+values.day);
     createDate.setHours(+values.hours);
     createDate.setMinutes(+values.minutes);
-    createPost({ title: values.title, text: values.text, date: createDate });
+    createPost({ title: values.title, text: values.text, date: new Date(+values.year, +values.month-1, +values.day) });
     onClose();
   };
+  useEffect(() => {
+    if (values.day.length && values.month.length) {
+      const error = validateDate(+values.day, +values.month);
+      console.log(error);
+    }
+  }, [values.day, values.month]);
   return (
     <>
       <h2 className={styles.title}>Новая запись</h2>
@@ -60,7 +86,7 @@ export default function PopupAdd({ onClose }: PopupProps) {
               maxLength={2}
               required={true}
               value={values.day}
-              onChange={handleChange}
+              onChange={validateDateField}
             ></input>
             <p className={styles.date_input__text}>.</p>
             <input
@@ -70,7 +96,7 @@ export default function PopupAdd({ onClose }: PopupProps) {
               placeholder="__"
               maxLength={2}
               value={values.month}
-              onChange={handleChange}
+              onChange={validateDateField}
               required={true}
             ></input>
             <p className={styles.date_input__text}>.</p>
@@ -92,7 +118,7 @@ export default function PopupAdd({ onClose }: PopupProps) {
               placeholder="__"
               maxLength={2}
               value={values.hours}
-              onChange={handleChange}
+              onChange={validateDateField}
               required={true}
             ></input>
             <p className={styles.date_input__text}>:</p>
@@ -103,7 +129,7 @@ export default function PopupAdd({ onClose }: PopupProps) {
               placeholder="__"
               maxLength={2}
               value={values.minutes}
-              onChange={handleChange}
+              onChange={validateDateField}
               required={true}
             ></input>
           </fieldset>

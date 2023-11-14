@@ -10,10 +10,6 @@ const checkResponse = (res) => {
 };
 const headersWithContentType = { "Content-Type": "application/json" };
 
-export const refreshAndSet = (method, contextSetter) => {
-  method().then(contextSetter);
-};
-
 export const getPostsNewFirst = () => {
   return fetch(`${URL}/posts/new-first`, {
     method: "GET",
@@ -29,14 +25,13 @@ export const getPostsOldFirst = () => {
 };
 
 export const getPosts = () => {
-  return fetch(`${URL}/posts/`, {
+  return fetch(`${URL}/posts`, {
     method: "GET",
     headers: headersWithContentType,
   }).then(checkResponse);
 };
 
 export const createPost = (post) => {
-  debugger
   return fetch(`${URL}/posts`, {
     method: "POST",
     headers: headersWithContentType,
