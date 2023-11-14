@@ -53,6 +53,7 @@
   .header {
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 16px;
     height: 118px;
   }
   .logo {
@@ -85,7 +86,7 @@
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 28px;
-    padding-bottom: 0;
+    padding-bottom: 34px;
     height: 172px;
   }
   .logo {
