@@ -3,12 +3,17 @@ import SortButton from "../button-sort/button-sort";
 import ButtonUp from "../button-up/button-up";
 import Post from "../post/post";
 import styles from "./main.module.css";
-import { getPosts, getPostsNewFirst, getPostsOldFirst } from "../utils/api";
+import { getPostsNewFirst, getPostsOldFirst } from "../utils/api";
 import { INote } from "../../services/types/data";
 
-export default function Body() {
+interface IBodyProp {
+  modal: boolean
+}
+
+export default function Body({modal}: IBodyProp) {
   const [notes, setNotes] = useState<Array<INote>>([]);
   const [sort, setSort] = useState<"new first" | "old first">("new first");
+
 
   const SortHandler = (e: any) => {
     setSort((sort) => {
@@ -34,7 +39,7 @@ export default function Body() {
     getPostsNewFirst().then((posts) => {
       setNotes(posts);
     });
-  }, []);
+  }, [modal]);
   return (
     <main className={styles.body}>
       <div className={styles.header}>
@@ -59,16 +64,11 @@ export default function Body() {
       {notes.length && (
         <div className={styles.posts}>
           {notes.map((note) => (
-            <Post
-              title={note.title}
-              text={note.text}
-              date={note.createdAt}
-              key={note._id as Key}
+            <Post note = {note}
             />
           ))}
         </div>
       )}
-
       <ButtonUp />
     </main>
   );

@@ -9,6 +9,9 @@
   border-radius: 10px;
   background-color: var(--color-white);
 }
+.container_important{
+  background-color: var(--color-navy);
+}
 
 .title {
   font-family: "Nunito";
@@ -19,6 +22,10 @@
   text-align: left;
   margin: 0;
   padding-bottom: 20px;
+}
+
+.text_important {
+  color: var(--color-white);
 }
 
 .text {

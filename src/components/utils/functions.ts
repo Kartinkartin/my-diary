@@ -20,7 +20,6 @@ export default function validateDate(day: number, month: number) {
   };
   if (day > months[month]) {
     return `Дней не может быть больше ${months[month]}`;
-  } else {
-    return "";
-  }
+  } 
+  return "";
 }

@@ -62,6 +62,15 @@
   justify-content: center;
   align-items: center;
   border-radius: 65px;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+.button:hover {
+  opacity: 0.8;
+}
+
+.button_disabled {
+  opacity: 0.8;
 }
 
 .date_input__container {
@@ -72,6 +81,7 @@
 
 .date_input__input {
   border: none;
+  border-radius: 5px;
   font-family: 'Nunito';
   font-size: 18px;
   font-style: normal;
@@ -100,8 +110,21 @@
   .form {
     padding-top: 40px;
   }
+  .field {
+    font-size: 32px;
+  }
   .field_large {
     height: 166px;
+  }
+  .date_input__input {
+    font-size: 32px;
+    width: 42px;
+  }
+  .date_input__input_large {
+    width: 120px;
+  }
+  .date_input__text {
+    font-size: 32px;
   }
   .button {
     margin-top: 10px;

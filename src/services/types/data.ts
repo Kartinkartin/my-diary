@@ -3,4 +3,5 @@ export interface INote {
   text: String;
   createdAt: Date;
   _id: String;
+  important: Boolean;
 }

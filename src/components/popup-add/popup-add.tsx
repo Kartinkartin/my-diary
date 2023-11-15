@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styles from "./popup-add.module.css";
 import { createPost } from "../utils/api";
 import useForm from "../../hooks/use-form";
@@ -9,6 +9,8 @@ interface PopupProps {
 }
 
 export default function PopupAdd({ onClose }: PopupProps) {
+  const [disabled, setDisabled] = useState(false);
+
   const { values, handleChange } = useForm({
     title: "",
     text: "",
@@ -27,13 +29,25 @@ export default function PopupAdd({ onClose }: PopupProps) {
       day: 32,
       hours: 24,
       minutes: 60,
-    }
+    };
     if (
       (Number(event.target.value) &&
-        Number(event.target.value) < fieldType[event.target.name] ) ||
-      event.target.value === ""
+        Number(event.target.value) < fieldType[event.target.name]) ||
+      event.target.value === "" ||
+      event.target.value === "0" ||
+      event.target.value === "00"
     ) {
       handleChange(event);
+    }
+  };
+
+  const focusOutHandler = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (event.target.value === "0" || event.target.value === "") {
+      event.target.style.border = "1px solid red";
+    } else {
+      event.target.style.border = "none";
     }
   };
 
@@ -41,19 +55,31 @@ export default function PopupAdd({ onClose }: PopupProps) {
     e.preventDefault();
     const createDate = new Date();
     createDate.setFullYear(+values.year);
-    createDate.setMonth(+values.month-1);
+    createDate.setMonth(+values.month - 1);
     createDate.setDate(+values.day);
     createDate.setHours(+values.hours);
     createDate.setMinutes(+values.minutes);
-    createPost({ title: values.title, text: values.text, date: new Date(+values.year, +values.month-1, +values.day) });
+    createPost({ title: values.title, text: values.text, date: createDate });
     onClose();
   };
+
   useEffect(() => {
     if (values.day.length && values.month.length) {
       const error = validateDate(+values.day, +values.month);
       console.log(error);
     }
-  }, [values.day, values.month]);
+    setDisabled((disabled) => {
+      for(let key in values) {
+        if(values[key] === "") {
+          return true
+        }
+      }
+      if (values.month === '0' || values.date === '0')  {
+        return true
+      }
+      return false;
+    })
+  }, [values]);
   return (
     <>
       <h2 className={styles.title}>Новая запись</h2>
@@ -87,6 +113,7 @@ export default function PopupAdd({ onClose }: PopupProps) {
               required={true}
               value={values.day}
               onChange={validateDateField}
+              onBlur={focusOutHandler}
             ></input>
             <p className={styles.date_input__text}>.</p>
             <input
@@ -97,6 +124,7 @@ export default function PopupAdd({ onClose }: PopupProps) {
               maxLength={2}
               value={values.month}
               onChange={validateDateField}
+              onBlur={focusOutHandler}
               required={true}
             ></input>
             <p className={styles.date_input__text}>.</p>
@@ -145,7 +173,11 @@ export default function PopupAdd({ onClose }: PopupProps) {
             value={values.text}
           />
         </label>
-        <button type="submit" className={styles.button}>
+        <button
+          type="submit"
+          className={`${styles.button} ${disabled && styles.button_disabled}`}
+          disabled={disabled}
+        >
           Поделиться наболевшим
         </button>
       </form>

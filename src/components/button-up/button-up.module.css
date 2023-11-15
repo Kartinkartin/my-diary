@@ -11,6 +11,12 @@
   position: absolute;
   bottom: -27px;
   right: 10px;
+  opacity: 1;
+  transition: background-color 0.5s linear;
+}
+.button:hover {
+  background-color: rgba(155, 181, 247)
+
 }
 
 .text {
@@ -22,6 +28,8 @@
   line-height: 110%; /* 19.8px */
   letter-spacing: 0.72px;
   text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 0.5s linear;
 }
 
 .icon {

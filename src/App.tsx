@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Header writeHandler={openModal} buttonActive={isModalOpen} />
-      <Body />
+      <Body modal={isModalOpen} />
       <Footer />
       {isModalOpen && (
           <Modal onClose={closeModal}>
