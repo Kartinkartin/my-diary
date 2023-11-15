@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# "Мой дневничок"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Фронтенд часть приложения, бекенд [тут](https://github.com/Kartinkartin/my-diary-backend)
+
+Реализовано:
+
+* добавление поста,
+
+* сортировка по дате,
+
+* валидация формы добавления поста
 
 ## Available Scripts
 
